@@ -35,29 +35,34 @@ const Ledger = () => {
 
       <div className="space-y-3">
         {mockTransactions.map((tx) => (
-          <div key={tx.id} className="glass-card-hover flex items-center justify-between p-4">
-            <div className="flex items-center gap-4">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-full ${
+          <div key={tx.id} className="glass-card-hover flex items-center justify-between p-3 sm:p-4">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className={`flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full ${
                 tx.type === "PULL" ? "bg-primary/10" : "bg-secondary/10"
               }`}>
                 {tx.type === "PULL" ? (
-                  <ArrowDown size={18} className="text-primary" />
+                  <ArrowDown size={16} className="text-primary sm:hidden" />
                 ) : (
-                  <ArrowUpRight size={18} className="text-secondary" />
+                  <ArrowUpRight size={16} className="text-secondary sm:hidden" />
+                )}
+                {tx.type === "PULL" ? (
+                  <ArrowDown size={18} className="text-primary hidden sm:block" />
+                ) : (
+                  <ArrowUpRight size={18} className="text-secondary hidden sm:block" />
                 )}
               </div>
-              <div>
-                <p className="text-sm font-medium text-foreground">
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm font-medium text-foreground truncate">
                   {tx.type}{tx.destination ? ` → ${tx.destination}` : ""}
                 </p>
-                <p className="text-xs text-muted-foreground">{tx.date}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">{tx.date}</p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-bold text-foreground font-mono">
+            <div className="text-right shrink-0 ml-2">
+              <p className="text-xs sm:text-sm font-bold text-foreground font-mono">
                 {tx.type === "PULL" ? "+" : "-"}{tx.amount.toLocaleString()} KOLI
               </p>
-              <p className={`text-xs font-medium ${statusColor[tx.status]}`}>
+              <p className={`text-[10px] sm:text-xs font-medium ${statusColor[tx.status]}`}>
                 {tx.status}
               </p>
             </div>

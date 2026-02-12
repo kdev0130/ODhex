@@ -16,7 +16,7 @@ const SignUp = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <div className="fixed left-0 right-0 top-0 z-50 gradient-btn px-4 py-2.5 text-center text-sm">
+      <div className="fixed left-0 right-0 top-0 z-50 gradient-btn px-4 py-2 sm:py-2.5 text-center text-xs sm:text-sm">
         Log in or Create an account to finish linking your external assets to ODHex.
       </div>
 
@@ -26,7 +26,7 @@ const SignUp = () => {
           <p className="mt-2 text-muted-foreground">Create your Vault</p>
         </div>
 
-        <div className="glass-card p-8">
+        <div className="glass-card p-6 sm:p-8">
           <h2 className="mb-6 text-xl font-semibold text-foreground">Sign Up</h2>
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
